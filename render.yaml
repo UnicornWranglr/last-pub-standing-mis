@@ -52,6 +52,10 @@ services:
         value: simon
       - key: SEED_OWNER_PASSWORD
         sync: false
+      - key: SEED_MANAGER_USERNAME
+        value: karen
+      - key: SEED_MANAGER_PASSWORD
+        sync: false
       - key: SEED_STAFF_USERNAME
         value: daniel
       - key: SEED_STAFF_PASSWORD

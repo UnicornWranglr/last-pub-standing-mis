@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import * as eventsModel from '../models/events.model.js';
 import { httpError } from '../middleware/errorHandler.js';
+import { logAction } from '../lib/audit.js';
 
 const dateString = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Expected YYYY-MM-DD');
 const timeString = z
@@ -46,6 +47,10 @@ export async function getOne(req, res, next) {
 export async function create(req, res, next) {
   try {
     const row = await eventsModel.create(req.body, req.user.id);
+    await logAction(req, 'create', 'events', row.id, {
+      name: row.name,
+      date: row.event_date,
+    });
     res.status(201).json(row);
   } catch (err) {
     next(err);
@@ -56,6 +61,10 @@ export async function update(req, res, next) {
   try {
     const row = await eventsModel.update(req.params.id, req.body);
     if (!row) return next(httpError(404, 'Event not found'));
+    await logAction(req, 'update', 'events', row.id, {
+      name: row.name,
+      date: row.event_date,
+    });
     res.json(row);
   } catch (err) {
     next(err);
@@ -66,6 +75,7 @@ export async function remove(req, res, next) {
   try {
     const ok = await eventsModel.remove(req.params.id);
     if (!ok) return next(httpError(404, 'Event not found'));
+    await logAction(req, 'delete', 'events', Number(req.params.id));
     res.status(204).end();
   } catch (err) {
     next(err);

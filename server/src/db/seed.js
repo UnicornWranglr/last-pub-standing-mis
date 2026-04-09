@@ -29,6 +29,11 @@ async function run() {
       role: 'owner',
     });
     await seedUser({
+      username: env.seedManagerUsername,
+      password: env.seedManagerPassword,
+      role: 'manager',
+    });
+    await seedUser({
       username: env.seedStaffUsername,
       password: env.seedStaffPassword,
       role: 'staff',

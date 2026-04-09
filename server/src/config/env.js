@@ -20,6 +20,8 @@ export const env = {
   // Seed accounts. Passwords are optional — if not set, that user is skipped.
   seedOwnerUsername: process.env.SEED_OWNER_USERNAME || 'simon',
   seedOwnerPassword: process.env.SEED_OWNER_PASSWORD || null,
+  seedManagerUsername: process.env.SEED_MANAGER_USERNAME || 'karen',
+  seedManagerPassword: process.env.SEED_MANAGER_PASSWORD || null,
   seedStaffUsername: process.env.SEED_STAFF_USERNAME || 'daniel',
   seedStaffPassword: process.env.SEED_STAFF_PASSWORD || null,
 };

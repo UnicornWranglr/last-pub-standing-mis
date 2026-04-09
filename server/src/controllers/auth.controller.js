@@ -4,6 +4,7 @@ import { z } from 'zod';
 import * as userModel from '../models/user.model.js';
 import { env } from '../config/env.js';
 import { httpError } from '../middleware/errorHandler.js';
+import { logActionAs } from '../lib/audit.js';
 
 export const loginSchema = z.object({
   username: z.string().min(1).max(50),
@@ -21,6 +22,17 @@ export async function login(req, res, next) {
     if (!ok) {
       return next(httpError(401, 'Invalid username or password'));
     }
+
+    // Update last login timestamp and audit the login (best-effort, non-blocking).
+    await userModel.updateLastLogin(user.id);
+    await logActionAs(
+      { id: user.id, username: user.username },
+      'login',
+      'auth',
+      null,
+      { role: user.role }
+    );
+
     const token = jwt.sign(
       { sub: user.id, username: user.username, role: user.role },
       env.jwtSecret,

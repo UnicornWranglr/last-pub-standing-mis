@@ -3,7 +3,6 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAuth } from '@/contexts/AuthContext';
 import { ApiError } from '@/lib/api';
 
@@ -33,18 +32,26 @@ export function Login() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted/30 p-4">
-      <Card className="w-full max-w-sm">
-        <CardHeader className="space-y-1">
-          <div className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary text-primary-foreground text-sm font-bold">
-              LPS
-            </div>
-            <CardTitle className="text-xl">Last Pub Standing</CardTitle>
+    <div className="chrome-dark flex min-h-screen flex-col items-center justify-center bg-background p-4 text-foreground">
+      <div className="w-full max-w-sm space-y-8">
+        {/* Brand lockup */}
+        <div className="flex flex-col items-center text-center">
+          <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+            <span className="font-display text-xl">LPS</span>
           </div>
-          <CardDescription>Management Information System</CardDescription>
-        </CardHeader>
-        <CardContent>
+          <h1 className="mt-5 font-display text-3xl leading-tight text-foreground">
+            Last Pub Standing
+          </h1>
+          <p className="mt-1 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+            City Pub &amp; Kitchen
+          </p>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Management Information System
+          </p>
+        </div>
+
+        {/* Form card */}
+        <div className="rounded-lg border bg-card p-6 text-card-foreground shadow-lg">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="username">Username</Label>
@@ -77,8 +84,12 @@ export function Login() {
               {submitting ? 'Signing in…' : 'Sign in'}
             </Button>
           </form>
-        </CardContent>
-      </Card>
+        </div>
+
+        <p className="text-center text-xs text-muted-foreground">
+          Trouble logging in? Contact Daniel.
+        </p>
+      </div>
     </div>
   );
 }

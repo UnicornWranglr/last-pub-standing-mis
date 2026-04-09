@@ -47,6 +47,9 @@ export default {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      fontFamily: {
+        display: ['Rye', 'ui-serif', 'serif'],
+      },
       keyframes: {
         'fade-in': {
           from: { opacity: '0' },

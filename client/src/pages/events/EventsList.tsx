@@ -22,6 +22,7 @@ function groupByDate(events: PubEvent[]) {
 
 export function EventsList() {
   const { user } = useAuth();
+  const canEdit = user?.role === 'owner' || user?.role === 'manager';
   const canDelete = user?.role === 'owner';
   const [month, setMonth] = useState(currentMonthISO());
   const [events, setEvents] = useState<PubEvent[]>([]);
@@ -79,9 +80,11 @@ export function EventsList() {
               className="w-[160px]"
             />
           </div>
-          <Button onClick={openNew}>
-            <Plus className="mr-1 h-4 w-4" /> Add event
-          </Button>
+          {canEdit && (
+            <Button onClick={openNew}>
+              <Plus className="mr-1 h-4 w-4" /> Add event
+            </Button>
+          )}
         </div>
       </div>
 
@@ -137,21 +140,25 @@ export function EventsList() {
                           <p className="pt-1 text-sm text-muted-foreground">{event.notes}</p>
                         )}
                       </div>
-                      <div className="flex gap-1 self-end sm:self-start">
-                        <Button variant="ghost" size="icon" onClick={() => openEdit(event)}>
-                          <Pencil className="h-4 w-4" />
-                        </Button>
-                        {canDelete && (
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={() => handleDelete(event)}
-                            className="text-destructive hover:text-destructive"
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </Button>
-                        )}
-                      </div>
+                      {(canEdit || canDelete) && (
+                        <div className="flex gap-1 self-end sm:self-start">
+                          {canEdit && (
+                            <Button variant="ghost" size="icon" onClick={() => openEdit(event)}>
+                              <Pencil className="h-4 w-4" />
+                            </Button>
+                          )}
+                          {canDelete && (
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={() => handleDelete(event)}
+                              className="text-destructive hover:text-destructive"
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
+                          )}
+                        </div>
+                      )}
                     </CardContent>
                   </Card>
                 ))}

@@ -1,10 +1,12 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { api, clearToken, getToken, setToken } from '@/lib/api';
 
+export type Role = 'owner' | 'manager' | 'staff';
+
 export interface User {
   id: number;
   username: string;
-  role: 'owner' | 'staff';
+  role: Role;
 }
 
 interface AuthContextValue {
