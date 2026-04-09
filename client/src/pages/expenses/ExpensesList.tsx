@@ -162,8 +162,23 @@ export function ExpensesList() {
                   <TableCell className="text-muted-foreground">
                     {row.supplier || '—'}
                   </TableCell>
-                  <TableCell className="max-w-[240px] truncate text-muted-foreground">
-                    {row.description || '—'}
+                  <TableCell className="max-w-[280px]">
+                    {row.description || row.notes ? (
+                      <div className="space-y-0.5">
+                        {row.description && (
+                          <div className="truncate text-sm text-foreground">
+                            {row.description}
+                          </div>
+                        )}
+                        {row.notes && (
+                          <div className="truncate text-xs italic text-muted-foreground">
+                            {row.notes}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <span className="text-sm text-muted-foreground">—</span>
+                    )}
                   </TableCell>
                   <TableCell className="text-right font-semibold tabular-nums">
                     {formatCurrency(row.amount)}
