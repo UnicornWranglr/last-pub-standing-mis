@@ -1,5 +1,11 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import { LogOut, LayoutDashboard, BanknoteIcon, CalendarDays } from 'lucide-react';
+import {
+  LogOut,
+  LayoutDashboard,
+  BanknoteIcon,
+  CalendarDays,
+  Rocket,
+} from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -8,6 +14,7 @@ const navItems = [
   { to: '/', label: 'Dashboard', icon: LayoutDashboard, end: true },
   { to: '/takings', label: 'Takings', icon: BanknoteIcon, end: false },
   { to: '/events', label: 'Events', icon: CalendarDays, end: false },
+  { to: '/deployment', label: 'Deployment', icon: Rocket, end: false },
 ];
 
 export function Layout() {

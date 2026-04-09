@@ -5,6 +5,7 @@ import { Login } from '@/pages/Login';
 import { Dashboard } from '@/pages/Dashboard';
 import { TakingsList } from '@/pages/takings/TakingsList';
 import { EventsList } from '@/pages/events/EventsList';
+import { Deployment } from '@/pages/Deployment';
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/" element={<Dashboard />} />
         <Route path="/takings" element={<TakingsList />} />
         <Route path="/events" element={<EventsList />} />
+        <Route path="/deployment" element={<Deployment />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
