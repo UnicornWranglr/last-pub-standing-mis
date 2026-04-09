@@ -1,0 +1,90 @@
+# ── Secrets / env files ─────────────────────────────────────────────────────
+# NEVER commit .env or anything that might hold credentials.
+.env
+.env.*
+!.env.example
+!**/.env.example
+
+# Common secret/credential files
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+*.asc
+secrets.json
+credentials.json
+service-account*.json
+*_rsa
+*_ed25519
+id_rsa
+id_ed25519
+
+# ── Node / npm / yarn / pnpm ────────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.npm/
+.pnpm-store/
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# ── Build output ────────────────────────────────────────────────────────────
+dist/
+build/
+out/
+coverage/
+.nyc_output/
+*.tsbuildinfo
+# tsc -b artifacts from composite config projects
+client/vite.config.js
+client/vite.config.d.ts
+
+# ── Vite / Vercel / Render / local tooling ─────────────────────────────────
+.vite/
+.vercel/
+.next/
+.nuxt/
+.turbo/
+.cache/
+.parcel-cache/
+
+# ── Editor / IDE ───────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# ── OS ──────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
+
+# ── Logs ────────────────────────────────────────────────────────────────────
+logs/
+*.log
+
+# ── Postgres / Docker local data ────────────────────────────────────────────
+pgdata/
+postgres-data/
+*.sql.gz
+*.dump
+
+# ── Temporary files ─────────────────────────────────────────────────────────
+tmp/
+temp/
+*.tmp
+*.bak
+*.old
