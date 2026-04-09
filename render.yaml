@@ -1,22 +1,25 @@
 # Render Blueprint for Last Pub Standing MIS
 # https://render.com/docs/blueprint-spec
 #
+# NOTE on the database:
+# This blueprint does NOT provision a Postgres instance — Render's free tier
+# only allows one free DB per account, and ours is in use elsewhere. Create
+# the Postgres instance manually in the Render dashboard first (any plan),
+# then copy its *Internal Database URL* and paste it as DATABASE_URL when
+# Render prompts for the sync:false env vars below.
+#
 # Usage:
-#   1. Push this repo to GitHub.
-#   2. In Render, click "New +" → "Blueprint" and select this repo.
-#   3. Render will detect this file and create a Postgres DB + Web service.
-#   4. Fill in the env vars marked `sync: false` in the Render UI before deploying.
+#   1. In Render dashboard, create a Postgres DB manually (New + → PostgreSQL).
+#      Name it something like "lps-mis-db". Copy the Internal Database URL.
+#   2. Push this repo to GitHub (already done).
+#   3. In Render, click "New +" → "Blueprint" and select this repo.
+#   4. Render detects this file and prompts for the sync:false env vars.
+#      Paste in DATABASE_URL, both seed passwords, and leave CLIENT_URL blank
+#      (you'll set it after Vercel is live).
 #   5. After the first deploy, copy the web service URL and set it as
 #      VITE_API_URL in your Vercel project.
 #   6. Once Vercel is deployed, set CLIENT_URL on this service to the Vercel
-#      URL (e.g. https://lps-mis.vercel.app) and trigger a manual deploy.
-
-databases:
-  - name: lps-mis-db
-    databaseName: pub_mis
-    user: pub
-    plan: free
-    postgresMajorVersion: "16"
+#      URL (e.g. https://lps-mis.vercel.app) and redeploy.
 
 services:
   - type: web
@@ -33,18 +36,15 @@ services:
         value: production
       - key: PORT
         value: "4000"
-      # Database connection auto-wired from the Postgres instance above.
+      # Paste the Internal Database URL of the manually-created Postgres.
       - key: DATABASE_URL
-        fromDatabase:
-          name: lps-mis-db
-          property: connectionString
+        sync: false
       # Signing key — Render generates a strong random value on first deploy.
       - key: JWT_SECRET
         generateValue: true
       - key: JWT_EXPIRES_IN
         value: 12h
-      # Fill in on first deploy. Set to your Vercel URL, e.g.
-      # https://lps-mis.vercel.app
+      # Fill in after Vercel is live, e.g. https://lps-mis.vercel.app
       - key: CLIENT_URL
         sync: false
       # Seeded users — usernames locked, passwords set manually in Render UI.

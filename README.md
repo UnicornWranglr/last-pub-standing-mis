@@ -49,19 +49,31 @@ Already done if you're reading this.
 
 ### 2 · Deploy the API + database on Render
 
+**Heads up:** `render.yaml` declares the **web service only** — not the database. Render's free tier only allows one Postgres per account, so we create the DB manually once and let the blueprint reference it via an env var. This also makes it easier to upgrade the DB plan independently later.
+
+#### 2a. Create the Postgres database (one-time, manual)
+
+1. In Render, click **New +** → **PostgreSQL**.
+2. Name it `lps-mis-db` (any name works), pick whichever plan you want (free if you have the slot, starter if not), region closest to your users.
+3. Click **Create Database** and wait for it to finish provisioning.
+4. On the database info page, copy the **Internal Database URL** (not the External one — Internal is faster and stays within Render's network).
+
+#### 2b. Deploy the web service via the blueprint
+
 1. In Render, click **New +** → **Blueprint** and select this repo.
-2. Render detects `render.yaml` and proposes:
-   - **`lps-mis-db`** — Postgres 16 (free tier)
-   - **`lps-mis-api`** — Node web service (free tier)
+2. Render detects `render.yaml` and proposes the `lps-mis-api` web service.
 3. Fill in the env vars marked "sync: false":
+   - `DATABASE_URL` — paste the Internal Database URL from step 2a.4
    - `SEED_OWNER_PASSWORD` — Simon's initial password
    - `SEED_STAFF_PASSWORD` — Daniel's initial password
    - `CLIENT_URL` — leave blank for now (you'll set this after Vercel is up)
-4. Click **Apply**. Render will provision Postgres, then build and start the API. The startup command runs migrations + seeds in order, then boots Express.
+4. Click **Apply**. Render clones the repo, runs `npm install` in `server/`, then the start command which migrates + seeds + boots Express.
 5. Once the service is live, copy its URL (e.g. `https://lps-mis-api.onrender.com`). You'll need it for Vercel.
 6. Sanity-check the API: `curl https://<your-api>.onrender.com/api/health` should return `{"status":"ok"}`.
 
 > **Free tier note:** Render spins down free web services after 15 min of inactivity and cold-starts take ~30s. Fine for demoing; upgrade to a starter plan if the demo needs to be instant.
+>
+> **Runtime note:** Render uses its native Node runtime for the API (not Docker), so `server/Dockerfile` is ignored on Render. The Dockerfile is only for local `docker compose up`.
 
 ### 3 · Deploy the client on Vercel
 
