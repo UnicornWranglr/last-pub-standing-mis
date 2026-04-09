@@ -32,29 +32,50 @@ export function Login() {
   }
 
   return (
-    <div className="chrome-dark flex min-h-screen flex-col items-center justify-center bg-background p-4 text-foreground">
-      <div className="w-full max-w-sm space-y-8">
-        {/* Brand lockup */}
+    <div className="chrome-dark relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background p-6 text-foreground">
+      {/* Atmospheric gold glow — "pub sign at night" */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,_hsl(var(--primary)/0.18),_transparent_55%),radial-gradient(circle_at_80%_110%,_hsl(var(--primary)/0.10),_transparent_60%)]"
+      />
+      {/* Subtle grid texture for depth */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.03] [background-image:linear-gradient(to_right,_white_1px,_transparent_1px),linear-gradient(to_bottom,_white_1px,_transparent_1px)] [background-size:48px_48px]"
+      />
+
+      <div className="relative w-full max-w-sm space-y-10">
+        {/* Brand lockup — full sign scale */}
         <div className="flex flex-col items-center text-center">
-          <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <span className="font-display text-xl">LPS</span>
+          <div className="relative">
+            <div
+              aria-hidden
+              className="absolute inset-0 -z-10 rounded-2xl bg-primary/30 blur-2xl"
+            />
+            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-xl shadow-primary/30 ring-1 ring-primary/50">
+              <span className="font-display text-2xl leading-none">LPS</span>
+            </div>
           </div>
-          <h1 className="mt-5 font-display text-3xl leading-tight text-foreground">
-            Last Pub Standing
+          <h1 className="mt-6 font-display text-4xl leading-[0.95] tracking-tight text-foreground">
+            Last Pub
+            <br />
+            Standing
           </h1>
-          <p className="mt-1 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+          <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-primary/90">
             City Pub &amp; Kitchen
           </p>
-          <p className="mt-3 text-sm text-muted-foreground">
+          <p className="mt-4 text-sm text-muted-foreground">
             Management Information System
           </p>
         </div>
 
-        {/* Form card */}
-        <div className="rounded-lg border bg-card p-6 text-card-foreground shadow-lg">
+        {/* Glass form card */}
+        <div className="relative rounded-2xl border border-border/80 bg-card/80 p-6 shadow-2xl shadow-black/40 backdrop-blur-xl ring-1 ring-white/[0.04]">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="username">Username</Label>
+              <Label htmlFor="username" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                Username
+              </Label>
               <Input
                 id="username"
                 autoComplete="username"
@@ -62,10 +83,13 @@ export function Login() {
                 onChange={(e) => setUsername(e.target.value)}
                 required
                 autoFocus
+                className="h-11 bg-background/50"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                Password
+              </Label>
               <Input
                 id="password"
                 type="password"
@@ -73,14 +97,18 @@ export function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                className="h-11 bg-background/50"
               />
             </div>
             {error && (
-              <p className="text-sm text-destructive" role="alert">
+              <div
+                className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive"
+                role="alert"
+              >
                 {error}
-              </p>
+              </div>
             )}
-            <Button type="submit" className="w-full" disabled={submitting}>
+            <Button type="submit" size="lg" className="w-full" disabled={submitting}>
               {submitting ? 'Signing in…' : 'Sign in'}
             </Button>
           </form>

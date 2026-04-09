@@ -3,6 +3,7 @@ import { Layout } from '@/components/Layout';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import { Login } from '@/pages/Login';
 import { Dashboard } from '@/pages/Dashboard';
+import { Insights } from '@/pages/Insights';
 import { TakingsList } from '@/pages/takings/TakingsList';
 import { EventsList } from '@/pages/events/EventsList';
 import { ExpensesList } from '@/pages/expenses/ExpensesList';
@@ -23,6 +24,14 @@ export default function App() {
         }
       >
         <Route path="/" element={<Dashboard />} />
+        <Route
+          path="/insights"
+          element={
+            <ProtectedRoute requireRole={['owner', 'manager']}>
+              <Insights />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/takings" element={<TakingsList />} />
         <Route path="/events" element={<EventsList />} />
 
