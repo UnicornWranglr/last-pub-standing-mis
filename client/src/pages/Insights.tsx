@@ -16,9 +16,12 @@ import {
 
 export function Insights() {
   return (
-    <div className="max-w-5xl space-y-6">
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight">Insights</h1>
+    <div className="animate-fade-in-up max-w-5xl space-y-8">
+      <div className="space-y-1.5">
+        <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+          Workspace
+        </div>
+        <h1 className="text-3xl font-semibold tracking-tight text-foreground">Insights</h1>
         <p className="text-sm text-muted-foreground">
           Charts, trends and forecasts built from your takings data.
         </p>

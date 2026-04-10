@@ -16,10 +16,15 @@ import {
 
 export function Deployment() {
   return (
-    <div className="max-w-4xl space-y-6">
+    <div className="animate-fade-in-up max-w-4xl space-y-8">
       {/* Intro */}
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight">Deployment options</h1>
+      <div className="space-y-1.5">
+        <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+          Info
+        </div>
+        <h1 className="text-3xl font-semibold tracking-tight text-foreground">
+          Deployment options
+        </h1>
         <p className="text-sm text-muted-foreground">
           Two ways to run the Last Pub Standing MIS. Both work identically
           from a day-to-day user perspective — the difference is where the

@@ -65,10 +65,13 @@ export function ExpensesList() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Expenses</h1>
+    <div className="animate-fade-in-up space-y-8">
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div className="space-y-1.5">
+          <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+            Workspace
+          </div>
+          <h1 className="text-3xl font-semibold tracking-tight text-foreground">Expenses</h1>
           <p className="text-sm text-muted-foreground">Log and review costs.</p>
         </div>
         <Button onClick={openNew}>

@@ -63,10 +63,13 @@ export function EventsList() {
   const grouped = groupByDate(events);
 
   return (
-    <div className="space-y-6">
+    <div className="animate-fade-in-up space-y-8">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Events</h1>
+        <div className="space-y-1.5">
+          <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+            Workspace
+          </div>
+          <h1 className="text-3xl font-semibold tracking-tight text-foreground">Events</h1>
           <p className="text-sm text-muted-foreground">Plan and track upcoming events.</p>
         </div>
         <div className="flex items-end gap-3">

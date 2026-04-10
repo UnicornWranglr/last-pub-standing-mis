@@ -215,9 +215,9 @@ function NavGroup({ label, items }: { label: string; items: NavItem[] }) {
               end={item.end}
               className={({ isActive }) =>
                 cn(
-                  'group relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all',
+                  'group relative flex items-center gap-3 overflow-hidden rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 ease-smooth',
                   isActive
-                    ? 'bg-primary/15 text-foreground shadow-[inset_0_0_0_1px_hsl(var(--primary)/0.3)]'
+                    ? 'text-foreground shadow-[inset_0_0_0_1px_hsl(var(--primary)/0.25)]'
                     : 'text-muted-foreground hover:bg-muted/60 hover:text-foreground'
                 )
               }
@@ -225,18 +225,26 @@ function NavGroup({ label, items }: { label: string; items: NavItem[] }) {
               {({ isActive }) => (
                 <>
                   {isActive && (
-                    <span
-                      aria-hidden
-                      className="absolute left-0 top-1/2 h-6 w-[3px] -translate-y-1/2 rounded-r-full bg-primary shadow-[0_0_12px_hsl(var(--primary)/0.6)]"
-                    />
+                    <>
+                      {/* Gradient fade from brand gold → transparent */}
+                      <span
+                        aria-hidden
+                        className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-transparent"
+                      />
+                      {/* Left edge glow bar */}
+                      <span
+                        aria-hidden
+                        className="absolute left-0 top-1/2 h-6 w-[3px] -translate-y-1/2 rounded-r-full bg-primary shadow-[0_0_14px_hsl(var(--primary)/0.7)]"
+                      />
+                    </>
                   )}
                   <item.icon
                     className={cn(
-                      'h-4 w-4 shrink-0 transition-colors',
+                      'relative h-4 w-4 shrink-0 transition-colors duration-200',
                       isActive ? 'text-primary' : 'text-muted-foreground group-hover:text-foreground'
                     )}
                   />
-                  <span>{item.label}</span>
+                  <span className="relative">{item.label}</span>
                 </>
               )}
             </NavLink>

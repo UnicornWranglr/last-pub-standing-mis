@@ -58,12 +58,15 @@ export function PayrollList() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Payroll</h1>
+    <div className="animate-fade-in-up space-y-8">
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div className="space-y-1.5">
+          <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+            Management · Owner only
+          </div>
+          <h1 className="text-3xl font-semibold tracking-tight text-foreground">Payroll</h1>
           <p className="text-sm text-muted-foreground">
-            Owner-only. Record wages, NI and pension per employee per pay period.
+            Record wages, NI and pension per employee per pay period.
           </p>
         </div>
         <Button onClick={openNew}>
