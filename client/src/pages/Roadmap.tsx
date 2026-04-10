@@ -69,9 +69,9 @@ export function Roadmap() {
                 <li>• Payroll module (owner only)</li>
                 <li>• Admin page with user management, audit log, CSV export</li>
                 <li>• Business totals: revenue, expenses, profit by period</li>
-                <li>• Insights page — charts, trends, day-of-week patterns, forecasts</li>
-                <li>• LPS brand pass on login & header</li>
-                <li>• Historical data import from the existing Google Sheet</li>
+                <li>• Insights wireframe — chart, day-of-week, forecast, event impact (running on demo data until your real numbers land)</li>
+                <li>• Rotas wireframe — owner/manager planner + staff "my shifts" view</li>
+                <li>• LPS brand pass on login &amp; header</li>
               </ul>
             </div>
           </div>
