@@ -114,8 +114,8 @@ A web-based Management Information System for **Last Pub Standing (LPS) — City
 | Expenses — delete | ❌ | ❌ | ✅ |
 | Payroll (anything) | ❌ | ❌ | ✅ |
 | Admin page & user management | ❌ | ❌ | ✅ |
-| Deployment page | ✅ | ✅ | ✅ |
-| Roadmap page | ✅ | ✅ | ✅ |
+| Deployment page | ❌ | ❌ | ✅ |
+| Roadmap page | ❌ | ❌ | ✅ |
 
 Enforced on both sides:
 - **Server** — `requireRole(...)` middleware on the affected routes returns 403 for disallowed roles

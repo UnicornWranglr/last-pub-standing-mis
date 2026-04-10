@@ -17,8 +17,8 @@ const rows: { feature: string; staff: Cell; manager: Cell; owner: Cell }[] = [
   { feature: 'Expenses — delete', staff: false, manager: false, owner: true },
   { feature: 'Payroll (anything)', staff: false, manager: false, owner: true },
   { feature: 'Admin page & user management', staff: false, manager: false, owner: true },
-  { feature: 'Deployment page', staff: true, manager: true, owner: true },
-  { feature: 'Roadmap page', staff: true, manager: true, owner: true },
+  { feature: 'Deployment page', staff: false, manager: false, owner: true },
+  { feature: 'Roadmap page', staff: false, manager: false, owner: true },
 ];
 
 function renderCell(value: Cell) {

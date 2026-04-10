@@ -34,8 +34,8 @@ const allNavItems: NavItem[] = [
   { to: '/expenses', label: 'Expenses', icon: Receipt, end: false, roles: ['owner', 'manager'] },
   { to: '/payroll', label: 'Payroll', icon: UsersRound, end: false, roles: ['owner'] },
   { to: '/admin', label: 'Admin', icon: Shield, end: false, roles: ['owner'] },
-  { to: '/roadmap', label: 'Roadmap', icon: Map, end: false, roles: ['owner', 'manager', 'staff'] },
-  { to: '/deployment', label: 'Deployment', icon: Rocket, end: false, roles: ['owner', 'manager', 'staff'] },
+  { to: '/roadmap', label: 'Roadmap', icon: Map, end: false, roles: ['owner'] },
+  { to: '/deployment', label: 'Deployment', icon: Rocket, end: false, roles: ['owner'] },
 ];
 
 // Mobile: how many items show in the bottom bar before overflowing into "More"
