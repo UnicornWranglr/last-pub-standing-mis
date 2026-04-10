@@ -13,6 +13,8 @@ const rows: { feature: string; staff: Cell; manager: Cell; owner: Cell }[] = [
   { feature: 'Events — view', staff: 'read', manager: true, owner: true },
   { feature: 'Events — create / edit', staff: false, manager: true, owner: true },
   { feature: 'Events — delete', staff: false, manager: false, owner: true },
+  { feature: 'Rotas — view own', staff: true, manager: true, owner: true },
+  { feature: 'Rotas — manage all', staff: false, manager: true, owner: true },
   { feature: 'Expenses — view / create / edit', staff: false, manager: true, owner: true },
   { feature: 'Expenses — delete', staff: false, manager: false, owner: true },
   { feature: 'Payroll (anything)', staff: false, manager: false, owner: true },

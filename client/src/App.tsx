@@ -8,6 +8,7 @@ import { Insights } from '@/pages/Insights';
 import { TakingsList } from '@/pages/takings/TakingsList';
 import { StaffTakings } from '@/pages/takings/StaffTakings';
 import { EventsList } from '@/pages/events/EventsList';
+import { Rotas } from '@/pages/Rotas';
 import { ExpensesList } from '@/pages/expenses/ExpensesList';
 import { PayrollList } from '@/pages/payroll/PayrollList';
 import { Admin } from '@/pages/Admin';
@@ -46,6 +47,7 @@ export default function App() {
         />
         <Route path="/takings" element={<TakingsRoute />} />
         <Route path="/events" element={<EventsList />} />
+        <Route path="/rotas" element={<Rotas />} />
 
         <Route
           path="/expenses"

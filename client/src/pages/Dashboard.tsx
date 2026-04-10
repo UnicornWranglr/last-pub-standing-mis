@@ -27,7 +27,7 @@ export function Dashboard() {
     if (canSeeFinancials) {
       api<TakingsSummary>('/takings/summary').then(setSummary).catch(() => setSummary(null));
     }
-    api<{ count: number }>('/events/upcoming-count')
+    api<{ count: number }>('/events/month-count')
       .then((r) => setUpcoming(r.count))
       .catch(() => setUpcoming(null));
   }, [canSeeFinancials]);
@@ -51,9 +51,9 @@ export function Dashboard() {
           />
           <StatTile
             icon={CalendarDays}
-            label="Upcoming events"
+            label="Events this month"
             value={upcoming !== null ? String(upcoming) : '—'}
-            hint="this month"
+            hint="all entries in the current calendar month"
             href="/events"
             linkLabel="View"
           />
@@ -86,9 +86,9 @@ export function Dashboard() {
         />
         <StatTile
           icon={CalendarDays}
-          label="Upcoming events"
+          label="Events this month"
           value={upcoming !== null ? String(upcoming) : '—'}
-          hint="this month"
+          hint="all entries in the current calendar month"
         />
       </div>
 

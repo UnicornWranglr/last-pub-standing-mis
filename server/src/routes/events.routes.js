@@ -9,7 +9,7 @@ router.use(requireAuth);
 
 // Everyone authed can view events (staff need to know what's on).
 router.get('/', ctrl.list);
-router.get('/upcoming-count', ctrl.upcomingCount);
+router.get('/month-count', ctrl.monthCount);
 router.get('/:id', ctrl.getOne);
 
 // Managers + owners can create/edit. Staff cannot.

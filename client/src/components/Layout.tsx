@@ -5,6 +5,7 @@ import {
   LayoutDashboard,
   BanknoteIcon,
   CalendarDays,
+  CalendarRange,
   Rocket,
   LineChart,
   Receipt,
@@ -31,6 +32,7 @@ const allNavItems: NavItem[] = [
   { to: '/insights', label: 'Insights', icon: LineChart, end: false, roles: ['owner', 'manager'] },
   { to: '/takings', label: 'Takings', icon: BanknoteIcon, end: false, roles: ['owner', 'manager', 'staff'] },
   { to: '/events', label: 'Events', icon: CalendarDays, end: false, roles: ['owner', 'manager', 'staff'] },
+  { to: '/rotas', label: 'Rotas', icon: CalendarRange, end: false, roles: ['owner', 'manager', 'staff'] },
   { to: '/expenses', label: 'Expenses', icon: Receipt, end: false, roles: ['owner', 'manager'] },
   { to: '/payroll', label: 'Payroll', icon: UsersRound, end: false, roles: ['owner'] },
   { to: '/admin', label: 'Admin', icon: Shield, end: false, roles: ['owner'] },
@@ -49,12 +51,16 @@ export function Layout() {
     user ? item.roles.includes(user.role) : false
   );
 
-  // Split navs into groups for the desktop sidebar
+  // Split navs into groups for the desktop sidebar.
+  // Management contains owner-sensitive operational pages: payroll + admin.
+  // Info contains owner-only reference pages: roadmap + deployment.
+  const managementPaths = ['/payroll', '/admin'];
+  const infoPaths = ['/roadmap', '/deployment'];
   const primaryNav = navItems.filter(
-    (i) => !['/roadmap', '/deployment', '/admin'].includes(i.to)
+    (i) => ![...managementPaths, ...infoPaths].includes(i.to)
   );
-  const adminNav = navItems.filter((i) => i.to === '/admin');
-  const infoNav = navItems.filter((i) => ['/roadmap', '/deployment'].includes(i.to));
+  const adminNav = navItems.filter((i) => managementPaths.includes(i.to));
+  const infoNav = navItems.filter((i) => infoPaths.includes(i.to));
 
   // Mobile: top N in the bar, rest in the drawer
   const mobileVisible = navItems.slice(0, MOBILE_VISIBLE);

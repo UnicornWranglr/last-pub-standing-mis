@@ -82,9 +82,9 @@ export async function remove(req, res, next) {
   }
 }
 
-export async function upcomingCount(_req, res, next) {
+export async function monthCount(_req, res, next) {
   try {
-    res.json({ count: await eventsModel.countUpcomingThisMonth() });
+    res.json({ count: await eventsModel.countThisMonth() });
   } catch (err) {
     next(err);
   }

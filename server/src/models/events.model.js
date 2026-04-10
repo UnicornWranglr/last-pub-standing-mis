@@ -100,12 +100,16 @@ export async function remove(id) {
   return rowCount > 0;
 }
 
-export async function countUpcomingThisMonth() {
+// Count all events in the current calendar month — past and future.
+// The dashboard widget originally filtered to event_date >= CURRENT_DATE,
+// but that surprised users who logged an event earlier in the same month
+// and then saw a count of zero. "Events this month" is the more
+// intuitive metric.
+export async function countThisMonth() {
   const { rows } = await query(`
     SELECT COUNT(*)::int AS count
       FROM events
-     WHERE event_date >= CURRENT_DATE
-       AND date_trunc('month', event_date) = date_trunc('month', CURRENT_DATE)
+     WHERE date_trunc('month', event_date) = date_trunc('month', CURRENT_DATE)
   `);
   return rows[0].count;
 }
