@@ -115,7 +115,13 @@ export function Login() {
         </div>
 
         <p className="text-center text-xs text-muted-foreground">
-          Trouble logging in? Contact Daniel.
+          Trouble logging in? Email me at{' '}
+          <a
+            href="mailto:daniel@bneconsulting.co.uk"
+            className="text-primary hover:underline"
+          >
+            daniel@bneconsulting.co.uk
+          </a>
         </p>
       </div>
     </div>

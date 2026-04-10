@@ -45,8 +45,8 @@ export function BackupGuidancePanel() {
             </li>
             <li className="flex gap-2">
               <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
-              Ask Daniel about upgrading the hosting plan — automated daily backups are around
-              an extra £5–15 / month depending on the tier.
+              Let me know if you want to upgrade the hosting plan — automated daily backups
+              are around an extra £5–15 / month depending on the tier.
             </li>
           </ul>
         </div>

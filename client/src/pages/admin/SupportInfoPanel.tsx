@@ -65,7 +65,7 @@ export function SupportInfoPanel() {
 
         <div className="rounded-md bg-muted/50 p-3 text-xs text-muted-foreground">
           If something looks wrong, broken, or you'd like a change made to how roles / features
-          work, just email Daniel directly. Response time is usually same-day.
+          work, just email me directly. Response time is usually same-day.
         </div>
       </CardContent>
     </Card>

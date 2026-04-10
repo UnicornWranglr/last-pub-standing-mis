@@ -220,7 +220,7 @@ export function Deployment() {
               </li>
               <li className="flex gap-2">
                 <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
-                You're responsible for backups (we can set up automatic
+                You're responsible for backups (I can set up automatic
                 backups to a USB drive or a cloud folder)
               </li>
               <li className="flex gap-2">

@@ -32,8 +32,8 @@ export function Roadmap() {
         <h1 className="text-3xl font-semibold tracking-tight text-foreground">Roadmap</h1>
         <p className="text-sm text-muted-foreground">
           Where the system is today, what's coming next, and the longer-term
-          wishlist. Not a contract — more a shared map of where we could take
-          this as the pub's needs grow.
+          wishlist. Not a contract — more a shared map of where this could go
+          as the pub's needs grow.
         </p>
       </div>
 
@@ -118,7 +118,7 @@ export function Roadmap() {
           <CardTitle className="flex items-center gap-2 text-base">
             <Lightbulb className="h-4 w-4 text-primary" /> Later / wishlist
           </CardTitle>
-          <CardDescription>Good ideas we'd build if and when they feel useful.</CardDescription>
+          <CardDescription>Good ideas I'd build if and when they feel useful.</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -159,11 +159,11 @@ export function Roadmap() {
       {/* Feedback */}
       <Card className="border-primary/30 bg-primary/5">
         <CardContent className="p-4 text-sm">
-          <div className="font-medium">Tell Daniel what matters most</div>
+          <div className="font-medium">Let me know what matters most</div>
           <p className="mt-1 text-muted-foreground">
             This is a rough list, not a commitment. If something here is exactly what you need,
-            say so and we'll bump it up the queue. If something's missing that would genuinely
-            help, tell us — we'll build it.
+            say so and I'll bump it up the queue. If something's missing that would genuinely
+            help, tell me — I'll build it.
           </p>
         </CardContent>
       </Card>

@@ -158,9 +158,12 @@ function PreviewBanner() {
             </div>
             <p className="mt-1 max-w-2xl text-xs text-muted-foreground">
               This is a visual sketch of how rota management could work for Last Pub Standing.
-              The data here is fake, nothing saves, and the design will evolve once we know
-              exactly what level of detail you want. Run this past Simon and tell us what
-              should change.
+              The data here is fake, nothing saves, and the design will evolve once I know
+              exactly what level of detail you want. Is this something that's useful / you'd
+              want? If so, how do you want this to work? Should staff be able to request shift
+              swaps? Track holiday from here? Lock the rota once published? The more I know up
+              front, the less I'll need to redo. Anything you spot that should change, let me
+              know and I'll iterate.
             </p>
           </div>
         </div>
@@ -594,18 +597,6 @@ function ManagementRotaView() {
         </div>
       </div>
 
-      {/* Footer note */}
-      <Card className="border-primary/30 bg-primary/[0.04]">
-        <CardContent className="p-4 text-sm">
-          <div className="font-medium">Run this past Simon</div>
-          <p className="mt-1 text-muted-foreground">
-            How does he want this to work? Should staff be able to request shift swaps? Track
-            holiday from here? Lock the rota once published? The more we know up front, the
-            less we'll need to redo. Anything you spot that should change, let me know and
-            I'll iterate.
-          </p>
-        </CardContent>
-      </Card>
     </div>
   );
 }

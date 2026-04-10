@@ -49,7 +49,7 @@ export function RoleMatrixPanel() {
           <Shield className="h-4 w-4" /> Access matrix
         </CardTitle>
         <CardDescription>
-          Current permissions for each role. Change requests come via Daniel — the matrix is
+          Current permissions for each role. Change requests come via me — the matrix is
           read-only in the app for now.
         </CardDescription>
       </CardHeader>

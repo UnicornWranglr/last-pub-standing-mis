@@ -92,7 +92,7 @@ export function Insights() {
           <CardDescription>Short answer: waiting on real data.</CardDescription>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground">
-          Charts without data look worse than no charts at all. As soon as Simon shares the
+          Charts without data look worse than no charts at all. As soon as you share the
           existing trading-history spreadsheet, a one-off import will push every historical
           day into the database and this page will come to life with years of real trade —
           not a placeholder.
